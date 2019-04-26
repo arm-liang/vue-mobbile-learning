@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>advertisement（广告演示）</title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">advertisement（广告演示）</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-content-padded">
+				<p>DCloud广告联盟，可以给DCloud的开发者提供更好的变现方式，更优质的广告体验。点击如下链接前往体验：<a href="http://m3w.cn/helload">广告演示</a></p>
+				<p>目前已支持悬浮红包、推送广告，更多广告陆续接通中，包括开屏广告、信息流广告。</p>
+				<p>了解更多DCloud广告联盟的优势及加入广告联盟的方式，请点击<a href="http://dcloud.io/dad">http://dcloud.io/dad</a></p>
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript">
+		mui.init();
+		mui.plusReady(function () {
+			if(plus.networkinfo.getCurrentType() == plus.networkinfo.CONNECTION_NONE){
+				mui.toast("当前网络不给力");
+			}
+		});		
+
+		//处理点击事件，需要打开原生浏览器
+		mui('body').on('tap', 'a', function(e) {
+			var href = this.getAttribute('href');
+			if (href) {
+				if (window.plus) {
+					plus.runtime.openURL(href);
+				} else {
+					location.href = href;
+				}
+			}
+		});
+
+	</script>
+
+</html>
