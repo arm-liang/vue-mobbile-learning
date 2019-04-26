@@ -1,7 +1,14 @@
 <template>
   <div class="container">
     <mt-header title="Vue移动端项目" fixed></mt-header>
-    <!-- 底部的导航栏 -->
+    <div class="app-container">
+      <!-- 添加过渡效果 -->
+      <transition>
+      <!-- 主应用的路由视图 -->
+        <router-view></router-view>
+      </transition>
+    </div>
+      <!-- 底部的导航栏 -->
     <nav class="mui-bar mui-bar-tab">
 			<router-link to="/home" class="mui-tab-item">
 				<span class="mui-icon mui-icon-home"></span>
@@ -20,8 +27,6 @@
 				<span class="mui-tab-label">搜索</span>
 			</router-link>
 		</nav>
-    <!-- 主应用的路由视图 -->
-    <router-view></router-view>
   </div>
 </template>
 
@@ -37,19 +42,41 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+  .container{
+    /* 顶上的状态蓝固定定位 */
+    padding-top: 40px;
+    /* 底线的nav绝对定位 */
+    padding-bottom: 50px;
+  }
+
+  .app-container{
+    /* 组件在左侧动画溢出的时候隐藏 */
+    overflow-x: hidden;
+  }
+
   .v-enter,
   .v-leave-to{
       opacity: 0;
-      transform: translateX(-80px);
   }
 
+  .v-enter{
+    /* 组件从右侧进来 */
+    transform: translate(100%);
+  }
+
+  .v-leave-to{
+    /* 组件从左侧出去 */
+    transform: translate(-100%);
+  }
+
+  .v-leave-active{
+    /* 组件离开的时候绝对定位让后面的元素可以出现在它上方 */
+    position: absolute;
+  }
   .v-enter-active,
   .v-leave-active{
-      transition: all 1s;
+    transition: all .5s ease;
   }
 
-  .container{
-    padding-top: 40px;
-  }
 </style>
