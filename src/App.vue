@@ -45,7 +45,6 @@ export default {
       new Toast("提示消息");
     },
     prevWeb() {
-      console.log(this);
       this.$router.go(-1);
     }
   },
