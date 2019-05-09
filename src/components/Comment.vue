@@ -18,6 +18,8 @@
         <div class="content">{{comment.content}}</div>
       </li>
     </ul>
+    <!-- 加载更多的按钮 -->
+    <mt-button plain type="primary" size="large" @click.native="getCommentList">加载更多</mt-button>
   </div>
 </template>
 
@@ -33,7 +35,7 @@ export default {
   ],
   data() {
     return {
-      commentList: null,
+      commentList: [],
       pageIdx: 1,
       content: ""
     };
@@ -47,18 +49,14 @@ export default {
   watch: {},
   methods: {
     getCommentList() {
-      this.$http
-        .get(
-          this.commentSrc +
-            "?newsId=" +
-            this.$route.params.newsId +
-            "&pageIdx=" +
-            this.pageIdx
-        )
-        .then(res => {
-          this.commentList = res.body.comments;
+      this.$http.get(this.commentSrc + "&pageIdx=" + this.pageIdx).then(res => {
+        if (res.body.status == 1) {
+          this.commentList = this.commentList.concat(res.body.comments);
           this.pageIdx++;
-        });
+        } else {
+          Toast("没有评论了~~");
+        }
+      });
     },
     sendContent() {
       if (this.content.trim() == "") {
@@ -67,7 +65,6 @@ export default {
       }
       this.$http
         .post(this.submitSrc, {
-          newsId: this.$route.params.newsId,
           content: xss(this.content)
         })
         .then(res => {
@@ -93,6 +90,7 @@ ul,
 li {
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 .flex-box {
   display: flex;

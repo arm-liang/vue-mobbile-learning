@@ -30,13 +30,20 @@ import {
   Swipe,
   Header,
   SwipeItem,
-  Button
+  Button,
+  Lazyload
 } from 'mint-ui';
 
 Vue.component(Button.name, Button);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Header.name, Header);
+Vue.use(Lazyload);
+
+// 导入 图片预览模块
+import preview from 'vue-photo-preview';
+import 'vue-photo-preview/dist/skin.css';
+Vue.use(preview);
 
 // 定义全局多滤器用于格式化时间
 Vue.filter('dateFormat', dateFormat);

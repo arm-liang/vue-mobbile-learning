@@ -3,11 +3,11 @@
     <div class="container">
       <h1 class="head">{{news.title}}</h1>
       <div class="metadata flex-box">
-        <p class="add-time">发布时间：j{{news.add_time | dateFormat('yyyy-mm-dd')}}</p>
+        <p class="add-time">发布时间：{{news.add_time | dateFormat('yyyy-mm-dd')}}</p>
         <p class="clicked">点击量：{{news.clicked}}</p>
       </div>
       <div class="content" v-html="news.content"></div>
-      <Comment commentSrc="getnewscom" submitSrc="addnewscom"></Comment>
+      <Comment :commentSrc="'getnewscom?newsId='+id" :submitSrc="'addnewscom?newsId='+id"></Comment>
     </div>
   </div>
 </template>
@@ -37,7 +37,7 @@ export default {
           Toast("没有找到这个新闻");
           return;
         }
-        var news = JSON.parse(res.body.news);
+        var news = res.body.news;
         this.news = news;
       });
     }
