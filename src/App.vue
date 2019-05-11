@@ -59,6 +59,9 @@ export default {
 </script>
 
 <style scoped>
+.mint-header.is-fixed {
+  z-index: 99;
+}
 .container {
   /* 顶上的状态蓝固定定位 */
   padding-top: 40px;
@@ -92,6 +95,12 @@ span.mui-tab-label {
 .app-container {
   /* 组件在左侧动画溢出的时候隐藏 */
   overflow-x: hidden;
+  /* position: relative; */
+}
+
+.app-container > div {
+  /* 解决在 component leave 的时候添加了 postition absolute 操作的塌陷 */
+  width: 100%;
 }
 
 .v-enter,
@@ -110,11 +119,10 @@ span.mui-tab-label {
 }
 
 .v-leave-active {
-  /* 组件离开的时候绝对定位让后面的元素可以出现在它上方 */
   position: absolute;
 }
 .v-enter-active,
 .v-leave-active {
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 </style>

@@ -1,13 +1,7 @@
 <template>
   <div>
     <div class="pho-preview">
-      <img
-        v-for="(imgUrl, index) in pho.phos"
-        :key="index"
-        :src="imgUrl"
-        preview="0"
-        preview-text="描述文字"
-      >
+      <img v-for="imgUrl in (pho.phos)" :key="imgUrl" :src="imgUrl" preview="0" preview-text="描述文字">
     </div>
     <Comment :commentSrc="'getphocom?phoId='+phoId" :submitSrc="'addphocom?phoid='+phoId"></Comment>
   </div>
@@ -24,8 +18,7 @@ export default {
       // 图片对象
       pho: null,
       // 图片的 id 号，从/home/pho/phoId 中获取
-      phoId: this.$route.params.phoId,
-      comList: []
+      phoId: this.$route.params.phoId
     };
   },
   computed: {},

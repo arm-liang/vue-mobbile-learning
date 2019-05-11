@@ -61,6 +61,10 @@ li {
   margin: 0;
   padding: 0;
 }
+.head {
+  font-size: 26px;
+  color: #26a2ff;
+}
 .flex-box {
   display: flex;
   justify-content: space-between;

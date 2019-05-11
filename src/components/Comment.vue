@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="comment-container">
     <!-- 评论内容 -->
     <div class="comment">
       <p class="comment-head">发表评论：</p>
@@ -96,5 +96,8 @@ li {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+}
+textarea {
+  margin-bottom: 5px;
 }
 </style>

@@ -11,9 +11,24 @@ import News from './components/news/News.vue';
 import NewsDetail from './components/news/NewsDetaiil.vue';
 import Photo from './components/photo/Photo.vue';
 import PhotoDetail from './components/photo/PhotoDetail.vue';
+import Goods from './components/goods/Goods.vue';
+import GoodsDetail from './components/goods/GoodsDetail.vue';
+import GoodsImgIntro from './components/goods/GoodsImgIntro.vue';
+
 
 export default new VueRouter({
   linkActiveClass: 'mui-active',
+  scrollBehavior(to, from, savedPosition) {
+    // return 期望滚动到哪个的位置
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return {
+        x: 0,
+        y: 0
+      };
+    }
+  },
   routes: [{
       path: '/',
       redirect: '/home'
@@ -37,6 +52,18 @@ export default new VueRouter({
     {
       path: '/home/photo/:phoId',
       component: PhotoDetail
+    },
+    {
+      path: '/home/goods',
+      component: Goods
+    },
+    {
+      path: '/home/goods/:godId',
+      component: GoodsDetail
+    },
+    {
+      path: '/home/goods/imgintro/:godId',
+      component: GoodsImgIntro
     },
     {
       path: '/member',
