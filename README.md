@@ -1,6 +1,6 @@
 # 这是一个移动端的网页学习项目
 > 需要配合[vue-mobile-server](https://github.com/arm-liang/vue-mobbile-server)服务器配合使用
->  [项目演示地址](http://120.77.181.41/vue-learn/)
+>  [项目演示地址](http://120.77.181.41:8080/vue-learn/)
 ## 实现 App.vue 组件中的功能
 
 1. 顶部 Header 使用的是 MintUI 中的Header
