@@ -15,7 +15,7 @@
     "eslint-plugin-html": "^5.0.3",
     "jquery": "^3.4.0",
     "mint-ui": "^2.2.13",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "sass-loader": "^7.1.0",
     "vue": "^2.6.10",
     "vue-photo-preview": "^1.1.3",
